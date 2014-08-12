@@ -10,10 +10,11 @@
 				<%= link_to "comments ", entry %>
 			<% end %>
 		<% end %>
-
+		
 		<% if current_user?(entry.user) %>
 			<%= link_to "comment", entry %>
 		<% end %>
+
 		
 	<% else %>
 		<% for user in @usersAll %>
@@ -21,6 +22,9 @@
 				<%= gravatar_for user%>
 				<%= link_to user.name, user %>
 				<% break %>
+			<% end %>
+			<% if current_user.following_users.include? user %>
+				<%= link_to "comment", entry %>
 			<% end %>
 		<% end %>
 		

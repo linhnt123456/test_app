@@ -1,3 +1,4 @@
+
 <table>
   <tr>
     <th><h1>All Entry</h1></th>
@@ -7,12 +8,11 @@
     <td><h2>entry_id</h2></td>
     <td></td>
     <td></td>
-    <td></td>
     <td><h2>Entry content</h2></td>
     <td></td>
     <td></td>
     <td></td>
-    <td></td>
+    
     <td></td>
     <td><h2>Entry's comments</h2></td>
   </tr>
@@ -22,13 +22,11 @@
   <tr></tr>
     <% @entries.each do |entry| %>
       <tr>
+        <td><%= gravatar_for entry.user %></td>
         <td><%= entry.user_id%></td>
-        <td><%= entry.id %></td>
-        <td></td>
         <td></td>
         <td></td>
         <td><%= entry.content %></td>
-        <td></td>
         <td></td>
         <td></td>
         <td></td>
