@@ -1,0 +1,42 @@
+<table>
+  <tr>
+    <th><h1>All Entry</h1></th>
+  </tr>
+  <tr>
+    <td><h2>user_id</h2></td>
+    <td><h2>entry_id</h2></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><h2>Entry content</h2></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><h2>Entry's comments</h2></td>
+  </tr>
+  <tr></tr>
+  <tr></tr>
+  <tr></tr>
+  <tr></tr>
+    <% @entries.each do |entry| %>
+      <tr>
+        <td><%= entry.user_id%></td>
+        <td><%= entry.id %></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><%= entry.content %></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td> <%= link_to "view commnets", entry %></td>
+      
+      </tr>
+    <% end %>
+  <%= will_paginate %>
+
+</table>

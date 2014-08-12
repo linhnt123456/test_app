@@ -1,0 +1,45 @@
+<li>
+	
+	<% if signed_in? %>
+		
+		<span class="content"><%= entry.content %></span>
+
+		
+		<% if entry.user.followed_users.include?(current_user) %>
+			<% if current_user.followed_users.include?(entry.user)%>
+				<%= link_to "comments ", entry %>
+			<% end %>
+		<% end %>
+
+		<% if current_user?(entry.user) %>
+			<%= link_to "comment", entry %>
+		<% end %>
+		
+	<% else %>
+		<% for user in @usersAll %>
+			<% if user.id == entry.user_id %>
+				<%= gravatar_for user%>
+				<%= link_to user.name, user %>
+				<% break %>
+			<% end %>
+		<% end %>
+		
+		<span class="content"><%= entry.content %></span>
+
+		<%= link_to "view comments ", entry %>
+	<% end %>
+
+	
+
+	<span class="timestamp">
+		Posted <%= time_ago_in_words(entry.created_at )%> ago.
+	</span>
+	
+
+	<% if current_user?(entry.user)%>
+		<%= link_to "delete", entry, method: :delete,
+										data: { confirm: "You sure?" },
+										title: entry.content %>
+	<% end %>
+	<hr/>
+</li>

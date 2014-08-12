@@ -1,4 +1,4 @@
-<% provide(:title, @user.name) %>
+<%= provide(:title, @user.name)%>
 <div class="row">
   <aside class="span4">
     <section>
@@ -7,5 +7,17 @@
         <%= @user.name %>
       </h1>
     </section>
+    <session>
+      <%= render 'shared/stats' %>
+    </session>
   </aside>
+  <div class="span8">
+    <%= render 'follow_form' if signed_in?%>
+    <% if @user.entries.any? %>
+      <ol class="entries">
+        <%= render @entries %>
+      </ol>
+      <%= will_paginate @entries %>
+    <% end %>
+  </div>
 </div>
